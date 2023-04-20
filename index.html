@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="us">
+<head>
+	<meta charset="utf-8">
+	<title>jQuery UI Example Page</title>
+	<link href="jquery-ui.css" rel="stylesheet">
+	<img src="happy-halloween-monster-colorful-illustration-flat-style-funny-character-silhouette-head-face-eyes-tongue-tooth-fang-horn-hands-up-free-vector.webp" alt="" width="500px" height="auto">
+	<style>
+	body{
+		font-family: "Trebuchet MS", sans-serif;
+		margin: 50px;
+	}
+	.demoHeaders {
+		margin-top: 2em;
+	}
+	#dialog-link {
+		padding: .4em 1em .4em 20px;
+		text-decoration: none;
+		position: relative;
+	}
+	
+	select {
+		width: 200px;
+	}
+	#red, #green, #blue {
+    float: left;
+    clear: left;
+    width: 300px;
+    margin: 15px;
+  }
+  #swatch {
+    width: 120px;
+    height: 100px;
+    margin-top: 18px;
+    margin-left: 350px;
+    background-image: none;
+  }
+  #red .ui-slider-range { background: #ef2929; }
+  #red .ui-slider-handle { border-color: #ef2929; }
+  #green .ui-slider-range { background: #8ae234; }
+  #green .ui-slider-handle { border-color: #8ae234; }
+  #blue .ui-slider-range { background: #729fcf; }
+  #blue .ui-slider-handle { border-color: #729fcf; }
+	</style>
+</head>
+<body>
+
+<h1>Alien Sighting Form</h1>
+<p>Sighting Date:</p>
+<!-- Datepicker -->
+<div id="datepicker"></div>
+<div class="ui-widget"></div>
+<!-- Datepicker end -->
+<br>
+
+<!-- Checkboxradio -->
+<h2 class="demoHeaders">Select an Alien Type</h2>
+<form style="margin-top: 1em;">
+	<div id="radioset">
+		<input type="radio" id="radio1" name="radio"><label for="radio1">Sponge-like</label>
+		<input type="radio" id="radio2" name="radio" checked="checked"><label for="radio2">Worm-like</label>
+		<input type="radio" id="radio3" name="radio"><label for="radio3">Insect-like</label>
+		<input type="radio" id="radio4" name="radio"><label for="radio4">Fish-like</label>
+		<input type="radio" id="radio5" name="radio"><label for="radio5">Plant-like</label>
+		<input type="radio" id="radio6" name="radio"><label for="radio6">Bird-like</label>
+	</div>
+</form>
+
+<!-- Slider -->
+<h3 class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px; width: 40%; background: #00eeff"><label for="weight">Alien Weight(LBS)</label></h3>
+<input type="text" id="weight" readonly style="border:0; color:#f6931f; font-weight:bold;">
+<div id="slider1" style="background: red; width:40%;"></div>
+
+
+<h3 class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px; width: 40%; background: #00eeff"><label for="height">Alien Height (m)</label></h3>
+<input type="text" id="height" readonly style="border:0; color:#f6931f; font-weight:bold;">
+<div id="slider2" style="background: red; width:40%;"></div>
+
+<!-- Spinner -->
+<h2 class="demoHeaders">Number of Eyes</h2>
+<input id="spinnereyes">
+
+<!-- Spinner -->
+<h2 class="demoHeaders">Number of Arms</h2>
+<input id="spinnerarms">
+
+<!-- Spinner -->
+<h2 class="demoHeaders">Number of Legs</h2>
+<input id="spinnerlegs">
+
+<h2 class="demoHeaders">Color of Alien</h2>
+
+<class="ui-widget-content" style="border:0;">
+ 
+	<p class="ui-state-default ui-corner-all ui-helper-clearfix" style="padding:4px;">
+	  <span class="ui-icon ui-icon-pencil" style="float:left; margin:-2px 5px 0 0;"></span>
+	  Simple Colorpicker
+	</p>
+	 
+	<div id="red"></div>
+	<div id="green"></div>
+	<div id="blue"></div>
+	 
+	<div id="swatch" class="ui-widget-content ui-corner-all"></div>>
+	<br>
+	<br>
+	<br>
+<!-- Button -->
+<div id="dialog" title="Thank You!">
+	<p>Your Sighting has been reported <br>
+		Keep Watching!
+		<i class="fas fa-alien"></i>
+		<img src="istockphoto-1162787787-612x612.jpg" alt="" width="50px" height="50px">
+		<div id="results"></div>
+	</p>
+  </div>
+ 
+	
+	</div>
+<button id="opener">Submit</button>
+
+
+<script src="external/jquery/jquery.js"></script>
+<script src="jquery-ui.js"></script>
+<script>
+$( "#accordion" ).accordion();
+
+var availableTags = [ //calendar 
+	"ActionScript",
+	"AppleScript",
+	"Asp",
+	"BASIC",
+	"C",
+	"C++",
+	"Clojure",
+	"COBOL",
+	"ColdFusion",
+	"Erlang",
+	"Fortran",
+	"Groovy",
+	"Haskell",
+	"Java",
+	"JavaScript",
+	"Lisp",
+	"Perl",
+	"PHP",
+	"Python",
+	"Ruby",
+	"Scala",
+	"Scheme"
+];
+$( "#autocomplete" ).autocomplete({
+	source: availableTags
+});
+
+$( "#button" ).button();
+$( "#button-icon" ).button({
+	icon: "ui-icon-gear",
+	showLabel: false
+});
+
+$( "#radioset" ).buttonset();
+
+$( "#controlgroup" ).controlgroup();
+
+$( "#tabs" ).tabs();
+
+$( "#dialog" ).dialog({
+	autoOpen: false,
+	width: 400,
+	buttons: [
+		{
+			text: "Ok",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		},
+		{
+			text: "Cancel",
+			click: function() {
+				$( this ).dialog( "close" );
+			}
+		}
+	]
+});
+
+// Link to open the dialog
+$( "#dialog-link" ).click(function( event ) {
+	$( "#dialog" ).dialog( "open" );
+	event.preventDefault();
+});
+
+$( "#datepicker" ).datepicker({
+	inline: true
+});
+
+$( "#slider" ).slider({
+	range: true,
+	values: [ 17, 67 ]
+});
+
+$( "#progressbar" ).progressbar({
+	value: 20
+});
+
+$( function() {
+		// initialize these
+	  $("#spinnereyes").spinner({min:0, max:100, value: 2});
+	  $( "#spinnerarms" ).spinner({min: 1, max:117, value: 2});
+	  $( "#spinnerlegs" ).spinner({min: 1, max:21, value: 17}); 
+	});
+
+
+// Hover states on the static widgets
+$( "#dialog-link, #icons li" ).hover(
+	function() {
+		$( this ).addClass( "ui-state-hover" );
+	},
+	function() {
+		$( this ).removeClass( "ui-state-hover" );
+	}
+);
+$( function() {
+    function hexFromRGB(r, g, b) {
+      var hex = [
+        r.toString( 16 ),
+        g.toString( 16 ),
+        b.toString( 16 )
+      ];
+      $.each( hex, function( nr, val ) {
+        if ( val.length === 1 ) {
+          hex[ nr ] = "0" + val;
+        }
+      });
+      return hex.join( "" ).toUpperCase();
+    }
+    function refreshSwatch() {
+      var red = $( "#red" ).slider( "value" ),
+        green = $( "#green" ).slider( "value" ),
+        blue = $( "#blue" ).slider( "value" ),
+        hex = hexFromRGB( red, green, blue );
+      $( "#swatch" ).css( "background-color", "#" + hex );
+    }
+ 
+    $( "#red, #green, #blue" ).slider({
+      orientation: "horizontal",
+      range: "min",
+      max: 255,
+      value: 127,
+      slide: refreshSwatch,
+      change: refreshSwatch
+    });
+    $( "#red" ).slider( "value", 255 );
+    $( "#green" ).slider( "value", 140 );
+    $( "#blue" ).slider( "value", 60 );
+  } );
+
+  $( function() {
+    $( "#dialog" ).dialog({
+      autoOpen: false,
+      show: {
+        effect: "blind",
+        duration: 1000
+      },
+      hide: {
+        effect: "explode",
+        duration: 1000
+      }
+    });
+ 
+    $( "#opener" ).on( "click", function() {
+      $( "#dialog" ).dialog( "open" );
+    });
+  } );
+
+  $("#slider1").slider({
+      range: "max",
+      min: 1,
+      max: 500,
+      value: 1,
+      slide: function( event, ui ) {
+        $( "#weight" ).val( "Weight: " + ui.value  + " LBS");
+	  }
+});
+$("#slider2").slider({
+      range: "max",
+      min: 1,
+      max: 100,
+      value: 1,
+      slide: function( event, ui ) {
+        $( "#height" ).val( "Height: " + ui.value  + " m");
+	  }
+});
+</script>
+</body>
+</html>
